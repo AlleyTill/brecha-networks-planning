@@ -25,18 +25,22 @@ These don't require further strategic discussion. Execute when ready.
 
 Verify availability and purchase via Namecheap or Cloudflare Registrar (Cloudflare cheaper, Namecheap easier UX for first-time buyer):
 
-**Primary (must-buy):**
-- `brechanetworks.com` (~$10-15/year)
+**Locked purchase list (all 8):**
 
-**Defensive (recommended):**
-- `brecha.network` (~$25-35/year — clever TLD trick)
-- `brechanetworks.org` (~$10-15/year)
+| # | Domain | Role |
+|---|---|---|
+| 1 | `brechanetworks.com` | **Primary canonical URL.** Site + all email sender domains (SPF/DKIM/DMARC). |
+| 2 | `brecha.network` | Secondary / redirect / tech-audience asset. 301 → `brechanetworks.com`. |
+| 3 | `brechanetwork.com` | Defensive (mashed singular). 301 → primary. |
+| 4 | `brechanetworks.org` | Defensive (mashed plural .org). 301 → primary. |
+| 5 | `brecha-network.com` | Defensive (hyphenated singular). 301 → primary. |
+| 6 | `brecha-networks.com` | Defensive (hyphenated plural). 301 → primary. |
+| 7 | `brecha-network.org` | Defensive (hyphenated singular .org). 301 → primary. |
+| 8 | `brecha-networks.org` | Defensive (hyphenated plural .org). 301 → primary. |
 
-**Optional:**
-- `brechanetworks.health` (~$80-130/year — premium TLD, defer unless squatting concern)
-- `brechanetworks.io` (~$35-50/year — tech-cool but not relevant for healthcare audience)
+Only `brechanetworks.com` serves canonical content and sends mail. The other 7 are redirect-only — no SPF/DKIM/DMARC, no MX records.
 
-**Total lean bundle: ~$45-65 first year.**
+`brechanetworks.health` and `brechanetworks.io` are **not** on the purchase list (deferred unless squatting concern emerges).
 
 WHOIS privacy on for every domain (free on Namecheap and Cloudflare, default-on for both).
 
