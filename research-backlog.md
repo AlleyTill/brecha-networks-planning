@@ -80,12 +80,6 @@ For the $300-500 one-hour healthcare/tech lawyer consult in WA in week 5-6:
 
 For week 7 bug-fix backup chain. Identify 2-3 Django freelancers on Upwork or Toptal. Brief 15-min intro calls so they're familiar with the project context if needed in week 7.
 
-### Maintenance status check (week 1)
-
-Verify these packages are actively maintained as of build start:
-- `django-mentions` — if stale (>1 year without commits), swap to `django-exo-mentions`
-- `pinax-notifications` — if stale, swap to `django-nyt`
-
 ---
 
 ## Desktop research tasks

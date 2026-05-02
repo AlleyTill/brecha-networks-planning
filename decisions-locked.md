@@ -81,8 +81,8 @@ These are the battle-tested packages Brecha Networks assembles rather than custo
 |---|---|
 | Auth + signup customization | `django-allauth` |
 | Threaded comments + moderation + notifications | `django-comments-xtd` |
-| @mentions in comments | `django-mentions` |
-| Notification preferences (frequency, mute, multi-channel) | `pinax-notifications` |
+| @mentions in comments | **In-house parser** (built in week 2; ~50 LOC regex + user lookup + notification dispatch) |
+| Notification preferences (frequency, mute, multi-channel) | `django-nyt` |
 | Connect requests + Follow Issue | `django-friendship` |
 | Tailwind integration | `django-tailwind` |
 | HTMX integration helpers | `django-htmx` |
@@ -91,7 +91,9 @@ These are the battle-tested packages Brecha Networks assembles rather than custo
 | Search (built into Django + Postgres) | PostgreSQL full-text + `pg_trgm` extension |
 | Geocoding/proximity (built into Django + Postgres) | PostGIS extension |
 
-**Maintenance verification in week 1:** Confirm each package's recent activity. If `django-mentions` or `pinax-notifications` show staleness (>1 year without commits), swap to `django-exo-mentions` or `django-nyt` respectively. Quick check; not a blocker.
+**Maintenance verification (completed May 2, 2026):**
+- `django-mentions` (ivirabyan): abandoned (no release or commit since 2015-12-30). `django-exo-mentions` (exolever): also unfit — no PyPI release since 2019, only 1 GitHub star, recent commits but no stable contract. **Decision: build a small in-house @mention parser in week 2 rather than inherit an abandoned dependency.**
+- `pinax-notifications`: stale (last release 2020-07; last commit 2024-07 — fails the >1yr criterion). **Swapped to `django-nyt`** (last release 2025-11, 182 stars, actively maintained).
 
 ### What we explicitly rejected and why
 
@@ -463,3 +465,4 @@ Target: under $100/month total.
 - **April 28, 2026 (rewrite + new repo):** Comprehensive rewrite of `decisions-locked.md` reflecting all locks. Migration from `community-registry-planning` to `brecha-networks-planning` repo. Old repo deleted. Predecessor `barrier-registry` repo archived (kept public for cohort/portfolio reference).
 - **May 2, 2026 (domain posture lock):** Locked 8-domain purchase list. `brechanetworks.com` = primary canonical + only email sender (SPF/DKIM/DMARC). `brecha.network` re-scoped to secondary / tech-audience redirect. Six additional defensive domains registered redirect-only (mashed/hyphenated × singular/plural × .com/.org). `brechanetworks.health` and `brechanetworks.io` dropped from the purchase list. Full table in `research-backlog.md`.
 - **May 2, 2026 (file rename):** Renamed `open-questions.md` → `research-backlog.md` to better describe its actual contents (parked tactical to-dos + post-launch research prompts). All "Things still genuinely undecided" had already been resolved; the file's role is execution + research, not open strategic questions. Updated cross-references in `README.md`, `build-plan.md`, and this file.
+- **May 2, 2026 (package maintenance check):** Ran the week-1 maintenance verification ahead of schedule. `pinax-notifications` swapped to `django-nyt` (cleanly maintained, last release 2025-11). `django-mentions` is abandoned (no commits since 2015) and the locked alternative `django-exo-mentions` also fails the bar (no PyPI release since 2019, 1 GitHub star). Decision: build a small in-house @mention parser in week 2 rather than inherit an abandoned dependency. Removed the maintenance-status-check tactical follow-up from `research-backlog.md`.
