@@ -86,20 +86,9 @@ For week 7 bug-fix backup chain. Identify 2-3 Django freelancers on Upwork or To
 
 Self-contained research prompts that can be picked up in any future session.
 
-### Task 1: Role taxonomy research
+### Task 1: Role taxonomy research — RESOLVED 2026-05-02
 
-**Prompt:** Look up dropdown menu trends in reputable services (LinkedIn role categorizations, Doximity, NPI taxonomy codes, AMA specialty lists, healthcare job boards). Find the most inclusive and exhaustive list of healthcare-related roles. Don't worry about list length — predictive text in the dropdown will help users find their role.
-
-**Constraints:**
-- Must be familiar/recognizable to US healthcare workers (the primary anchor audience)
-- Must include space for non-clinical roles (Admin, Policy, Legal, Researcher, Developer)
-- Must NOT include "Affected Individual" or any patient-as-patient category
-- "Developer in healthcare" must be present as a category for builders/founders/technologists
-- "Other" with required free-text description as fallback
-
-**Output:** Finalized list of roles for the signup dropdown. Each role should have a one-line definition that appears as help text or tooltip.
-
-**Status:** Blocks signup-form completion in week 2-3. Run before then.
+Locked taxonomy of 42 roles + "Other" lives in `role-taxonomy.md`. Sources, synthesis logic, and judgment calls documented there.
 
 ---
 

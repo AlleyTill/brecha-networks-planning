@@ -66,9 +66,9 @@ Three principles inherited from the planning phase that supersede ordinary produ
 | Database (production) | PostgreSQL with PostGIS (geocoding/proximity) and pg_trgm (search) extensions |
 | Geocoding | Mapbox Geocoding API |
 | Auth | Magic link + code-based email verification via `django-allauth` |
-| Translation | Google Translate API or DeepL API (translate-on-demand) |
-| Email | Postmark or Resend (specific choice TBD at deploy time) |
-| Hosting | Railway or Render (paid tier — free tier insufficient for production) |
+| Translation | **DeepL API** (translate-on-demand) — better EN↔ES quality, covers full post-AWE language plan |
+| Email | **Resend** — 3K/mo free tier covers AWE-launch volume; SPF/DKIM/DMARC supported on `brechanetworks.com` |
+| Hosting | **Railway** (Pro tier) — paid; cheaper than Render at AWE-scale and faster DX for solo builder |
 | Caching | `django-redis` |
 | Analytics | Plausible (privacy-respecting) — adding in week 6 |
 | Domain registrar | TBD (Namecheap or Cloudflare Registrar recommended; tactical purchase pending) |
@@ -129,7 +129,7 @@ These conventions apply from week 1 onward to avoid SEO redirect chains during t
 Account required to post. **No fully anonymous posting option.** Every account has a display identity that includes:
 
 - **Username** (not necessarily real name; pseudonyms allowed; 3-30 chars; alphanumeric + underscore + hyphen; must start with letter; case-insensitive uniqueness)
-- **Verified role** (from role taxonomy — pending research; see `research-backlog.md`)
+- **Verified role** (from locked taxonomy — see `role-taxonomy.md`; 42 roles + "Other" across Clinical, Non-clinical, Builder/Tech)
 - **Verified region** (state/province level for display; full geocoded data stored)
 - **Optional:** real name, organization name, more specific location
 
@@ -267,7 +267,7 @@ After role + region + ToS, user picks "their issue" from auto-suggest dropdown:
 - **No visual map at AWE.** Geocoded foundation only. Choropleth view deferred to post-AWE when data density supports it.
 - **Categories at launch:** 15-25 curated barrier categories, each mapped to a SNOMED CT concept ID stored in the database. Display uses category names, not SNOMED's. ID stored for future migration.
 - **SNOMED mapping approach:** self-serve via free SNOMED browser (browser.ihtsdotools.org). Healthcare informatics consult deferred post-AWE per Q11 lock.
-- **Role taxonomy at launch:** pending research (see `research-backlog.md`). Inclusive/exhaustive list with predictive-text dropdown.
+- **Role taxonomy at launch:** **LOCKED** — 42 roles + "Other (free-text)" grouped Clinical / Non-clinical / Builder/Tech / Other. Predictive-text dropdown paired with a free-text "Specialty / focus area" field. Full table + sources + judgment calls in `role-taxonomy.md`.
 
 ---
 
@@ -275,7 +275,7 @@ After role + region + ToS, user picks "their issue" from auto-suggest dropdown:
 
 - **Lawyer consult: COMMITTED.** $300-500 one-hour consultation in week 5-6 with a healthcare/tech lawyer in WA. Pre-loaded agenda items: trademark filing strategy (Brecha Networks Class 42 + 44 with Brea Networks + Breca Peru audio-similarity flags), user-generated content liability (Section 230 + defamation mitigation), HIPAA boundary confirmation, GDPR cross-border data flow, templated ToS sufficiency, post-AWE verified credential feature liability shifts.
 - **Healthcare informatics consult: DEFERRED.** Self-serve via free SNOMED browser at launch. Reserve $200-400 for post-AWE if SNOMED becomes more central to user-facing features.
-- **Privacy policy:** Templated GDPR-compliant policy via Termly, iubenda, or similar. ~$5-15/month.
+- **Privacy policy:** **iubenda Essentials** (~$5-7/mo, 25K pageviews/mo cap — well above AWE-launch volume). GDPR + CCPA + auto-updates as laws change. Healthcare-specific clauses to be confirmed/added during the week 5-6 lawyer consult.
 - **Terms of Service must include:**
   - **Good-faith representation clause:** users agree to truthfully represent their actual location, role, and barrier experience. Misrepresentation grounds for suspension/removal.
   - **Platform-purpose clause:** platform is for coordinating on healthcare barriers among professionals and developers, NOT for personal medical experience sharing or seeking medical advice.
@@ -466,3 +466,4 @@ Target: under $100/month total.
 - **May 2, 2026 (domain posture lock):** Locked 8-domain purchase list. `brechanetworks.com` = primary canonical + only email sender (SPF/DKIM/DMARC). `brecha.network` re-scoped to secondary / tech-audience redirect. Six additional defensive domains registered redirect-only (mashed/hyphenated × singular/plural × .com/.org). `brechanetworks.health` and `brechanetworks.io` dropped from the purchase list. Full table in `research-backlog.md`.
 - **May 2, 2026 (file rename):** Renamed `open-questions.md` → `research-backlog.md` to better describe its actual contents (parked tactical to-dos + post-launch research prompts). All "Things still genuinely undecided" had already been resolved; the file's role is execution + research, not open strategic questions. Updated cross-references in `README.md`, `build-plan.md`, and this file.
 - **May 2, 2026 (package maintenance check):** Ran the week-1 maintenance verification ahead of schedule. `pinax-notifications` swapped to `django-nyt` (cleanly maintained, last release 2025-11). `django-mentions` is abandoned (no commits since 2015) and the locked alternative `django-exo-mentions` also fails the bar (no PyPI release since 2019, 1 GitHub star). Decision: build a small in-house @mention parser in week 2 rather than inherit an abandoned dependency. Removed the maintenance-status-check tactical follow-up from `research-backlog.md`.
+- **May 2, 2026 (provider locks + role taxonomy):** Locked four provider choices: **Email = Resend** (3K/mo free covers AWE-launch; cheaper at projected scale than Postmark Basic $15). **Translation = DeepL** (better EN↔ES quality, Mexico-core priority; 31 languages cover the post-AWE plan). **Hosting = Railway Pro** (cheaper than Render at AWE-scale, faster DX for solo builder). **Privacy policy = iubenda Essentials** (~$5-7/mo, 25K pageview cap fits launch volume). Tech stack table + Privacy policy bullet updated. Resolved tasks #1, #2, #3, #5. Locked role taxonomy: 42 roles + "Other" across Clinical / Non-clinical / Builder/Tech, sources synthesized from NUCC, AMA/ABMS, Doximity, LinkedIn, Health eCareers/JAMA, HRSA, CMS, ONC/HIMSS. Full table + judgment calls in new file `role-taxonomy.md`. Removed the "pending research" placeholders. Resolved Task 1 in `research-backlog.md`.
