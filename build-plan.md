@@ -1,7 +1,7 @@
 # Build Plan — Brecha Networks
 
 *Last updated: April 28, 2026*
-*Companion files: `decisions-locked.md` (architectural source of truth), `open-questions.md` (remaining unknowns + tactical to-dos)*
+*Companion files: `decisions-locked.md` (architectural source of truth), `research-backlog.md` (parked tactical to-dos + research prompts)*
 
 ---
 
@@ -228,7 +228,7 @@ Examples:
 - Custom error pages (404, 500) styled with Tailwind
 - GDPR data export feature (management command produces JSON of user's data on request)
 - Account deletion flow (anonymizes user content per Q17 lock)
-- Lawyer consult completed (~$300-500, agenda from `open-questions.md` Tactical Follow-ups)
+- Lawyer consult completed (~$300-500, agenda from `research-backlog.md` Tactical Follow-ups)
 - Demo outline drafted (~1 hour — what story, what features, identify build gaps for week 6 polish)
 - Pre-vet 2-3 Django freelancers for week 7 backup chain (15-min intro calls)
 
@@ -237,7 +237,7 @@ Examples:
 - Build moderation queue view in Django admin
 - Write data export management command
 - Test email deliverability with [Mail Tester](https://www.mail-tester.com)
-- Schedule + attend lawyer consult; bring agenda from `open-questions.md`
+- Schedule + attend lawyer consult; bring agenda from `research-backlog.md`
 - Write demo outline document
 
 **Outsourceable tasks:**

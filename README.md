@@ -8,7 +8,7 @@ This repository holds planning and decision documents. The codebase lives in a s
 
 - **`decisions-locked.md`** — finalized architectural and product decisions. Tech stack, privacy/identity model, content language, forum features, legal posture, hosting, branding, build sequence, budget. Append-only change log at the bottom.
 - **`build-plan.md`** — week-by-week unified build plan with embedded learning topics, AI-assistance gradient, quality gates, and post-AWE roadmap. Derived from `decisions-locked.md`.
-- **`open-questions.md`** — remaining unresolved items (mostly desktop research tasks + parked tactical follow-ups). Most prior questions have been resolved and moved to `decisions-locked.md`.
+- **`research-backlog.md`** — parked tactical to-dos + self-contained desktop research prompts. All prior strategic questions have been resolved and moved to `decisions-locked.md`. (Renamed from `open-questions.md` on May 2, 2026.)
 
 ## Working with Claude on this project
 
@@ -16,13 +16,13 @@ When starting a new conversation about Brecha Networks, share the relevant subse
 
 - For architectural questions: `decisions-locked.md`
 - For build-step questions: `build-plan.md`
-- For "what's still undecided?": `open-questions.md`
+- For "what's still to do or research?": `research-backlog.md`
 
 When decisions change or new ones get locked:
 
 1. Discuss the decision fully before updating files
 2. Update `decisions-locked.md` and add a line to its change log
-3. Remove the corresponding question from `open-questions.md` if applicable
+3. Remove the corresponding item from `research-backlog.md` if applicable
 4. Commit with a clear message describing what changed
 
 ## Project status

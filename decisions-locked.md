@@ -1,17 +1,17 @@
 # Decisions Locked — Brecha Networks
 
 *Last updated: April 28, 2026*
-*Companion files: `build-plan.md` (week-by-week execution), `open-questions.md` (unresolved items)*
+*Companion files: `build-plan.md` (week-by-week execution), `research-backlog.md` (unresolved items)*
 
 ---
 
 ## How to use this file
 
-This document holds finalized architectural and product decisions for Brecha Networks. When working with Claude or Claude Code on this project, share this file at the start of a new session to restore context. Pair with `build-plan.md` for execution context and `open-questions.md` for remaining unknowns.
+This document holds finalized architectural and product decisions for Brecha Networks. When working with Claude or Claude Code on this project, share this file at the start of a new session to restore context. Pair with `build-plan.md` for execution context and `research-backlog.md` for remaining unknowns.
 
 **Editing rules:**
 - Don't modify locked decisions mid-discussion. Propose changes, discuss them, then update once a new decision is locked.
-- When a question moves from open to resolved, remove it from `open-questions.md` and add it here.
+- When a strategic question is resolved, capture the decision here. (Tactical to-dos and research prompts live in `research-backlog.md` and don't need migration.)
 - Add a line to the change log at the bottom whenever this file is updated.
 
 ---
@@ -127,7 +127,7 @@ These conventions apply from week 1 onward to avoid SEO redirect chains during t
 Account required to post. **No fully anonymous posting option.** Every account has a display identity that includes:
 
 - **Username** (not necessarily real name; pseudonyms allowed; 3-30 chars; alphanumeric + underscore + hyphen; must start with letter; case-insensitive uniqueness)
-- **Verified role** (from role taxonomy — pending research; see `open-questions.md`)
+- **Verified role** (from role taxonomy — pending research; see `research-backlog.md`)
 - **Verified region** (state/province level for display; full geocoded data stored)
 - **Optional:** real name, organization name, more specific location
 
@@ -206,7 +206,7 @@ After role + region + ToS, user picks "their issue" from auto-suggest dropdown:
 ## Content & language model
 
 - **Content posting language:** native language allowed for full barrier description. **English summary required** (2-3 sentences) for every barrier post. On-demand translate button on detail pages for full descriptions in other languages.
-- **UI language at launch:** **English only.** Codebase fully internationalized from day one (Django i18n, all UI strings in translation files). Adding additional languages post-AWE is a translation task only, no code changes. Which languages to add post-AWE is a research task (see `open-questions.md`).
+- **UI language at launch:** **English only.** Codebase fully internationalized from day one (Django i18n, all UI strings in translation files). Adding additional languages post-AWE is a translation task only, no code changes. Which languages to add post-AWE is a research task (see `research-backlog.md`).
 - **Translation:** Google Translate API or DeepL API, called on-demand when users click "translate" on a non-English description.
 
 ---
@@ -265,7 +265,7 @@ After role + region + ToS, user picks "their issue" from auto-suggest dropdown:
 - **No visual map at AWE.** Geocoded foundation only. Choropleth view deferred to post-AWE when data density supports it.
 - **Categories at launch:** 15-25 curated barrier categories, each mapped to a SNOMED CT concept ID stored in the database. Display uses category names, not SNOMED's. ID stored for future migration.
 - **SNOMED mapping approach:** self-serve via free SNOMED browser (browser.ihtsdotools.org). Healthcare informatics consult deferred post-AWE per Q11 lock.
-- **Role taxonomy at launch:** pending research (see `open-questions.md`). Inclusive/exhaustive list with predictive-text dropdown.
+- **Role taxonomy at launch:** pending research (see `research-backlog.md`). Inclusive/exhaustive list with predictive-text dropdown.
 
 ---
 
@@ -301,7 +301,7 @@ After role + region + ToS, user picks "their issue" from auto-suggest dropdown:
 
 - **Public deploy date:** Week 4-5 of the 8-week timeline (NOT week 8). Site lives behind invite-only beta with Multiverse School cohort during the build.
 - **Launch model:** **Invite-only beta** during build. No public-facing holding page at launch. Site is technically public but only shared with invited testers. At AWE, the beta transitions to public launch via content/banner changes (e.g., remove "BETA" indicator, update pinned social posts) — not a technical gate-lift.
-- **Domain posture:** `brechanetworks.com` is the **primary canonical URL** and the only domain serving content or sending mail. Seven other domains are registered as **redirect-only (301 → `brechanetworks.com`)**: `brecha.network` (secondary / tech-audience asset), `brechanetwork.com`, `brechanetworks.org`, `brecha-network.com`, `brecha-networks.com`, `brecha-network.org`, `brecha-networks.org`. Redirect-only domains carry no MX records and no SPF/DKIM/DMARC. Full purchase list in `open-questions.md` → Tactical follow-ups → Domain purchase.
+- **Domain posture:** `brechanetworks.com` is the **primary canonical URL** and the only domain serving content or sending mail. Seven other domains are registered as **redirect-only (301 → `brechanetworks.com`)**: `brecha.network` (secondary / tech-audience asset), `brechanetwork.com`, `brechanetworks.org`, `brecha-network.com`, `brecha-networks.com`, `brecha-network.org`, `brecha-networks.org`. Redirect-only domains carry no MX records and no SPF/DKIM/DMARC. Full purchase list in `research-backlog.md` → Tactical follow-ups → Domain purchase.
 - **HTTPS:** Handled automatically by Railway/Render
 - **Database backups:** Automated, verified before week 5
 - **Environment variables:** Secrets via env vars (`django-environ`), not in code
@@ -321,7 +321,7 @@ After role + region + ToS, user picks "their issue" from auto-suggest dropdown:
 
 ## Eco-sphere (social / external presence)
 
-- **Social accounts:** IG, LinkedIn, Substack, GitHub, X — all reserved/created with consistent branding (`@brechanetworks` where available; qualifier where not — see tactical follow-ups in `open-questions.md`)
+- **Social accounts:** IG, LinkedIn, Substack, GitHub, X — all reserved/created with consistent branding (`@brechanetworks` where available; qualifier where not — see tactical follow-ups in `research-backlog.md`)
 - **Footer links:** From site to all relevant social accounts (5-10 click discoverability requirement)
 - **Pinned posts:** Each social account has a pinned "Launching at AWE" post until launch
 - **Substack:** First post drafted and scheduled for AWE day morning
@@ -461,4 +461,5 @@ Target: under $100/month total.
 - **April 28, 2026 (open question resolution pass):** Q6 (account creation) — Flow C code-based hybrid via django-allauth + magic link return logins + mobile-optimal HTML. Q7 (scope cuts) — multiple locations per user, three-way affiliation markers, DMs, follow person/location all CUT; status tracking REINSTATED with color dots; person search, issue auto-suggest, multi-location barriers ADDED. Q8 (content seeding) — no pre-AWE seeding, infrastructure-first, real users post-launch only if load-bearing. Q9 (SEO) — noindex weeks 1-2, allow indexing from week 3. Q10 (lawyer consult) — COMMITTED $300-500 week 5-6. Q11 (informatics consult) — DEFERRED, self-serve SNOMED. Q12 (backup chain) — AI → community → freelancer escalation. Q14 (demo script) — hybrid timing week 5 outline + week 7-8 refinement. Q15 (suggestions) — private form, simplest. Q16 (branding) — wordmark + bridge icon, deep teal, Inter, "Find the people working on the same problem." tagline. Q17 (data over time) — deletion=anonymize, indefinite retention. AWE deadline reframed as non-sacred; quality gate is "load-bearing platform."
 - **April 28, 2026 (package commitments):** Locked Django package list — django-allauth, django-comments-xtd, django-mentions, pinax-notifications, django-friendship, django-redis, django-environ, django-tailwind, django-htmx. Verify maintenance status in week 1.
 - **April 28, 2026 (rewrite + new repo):** Comprehensive rewrite of `decisions-locked.md` reflecting all locks. Migration from `community-registry-planning` to `brecha-networks-planning` repo. Old repo deleted. Predecessor `barrier-registry` repo archived (kept public for cohort/portfolio reference).
-- **May 2, 2026 (domain posture lock):** Locked 8-domain purchase list. `brechanetworks.com` = primary canonical + only email sender (SPF/DKIM/DMARC). `brecha.network` re-scoped to secondary / tech-audience redirect. Six additional defensive domains registered redirect-only (mashed/hyphenated × singular/plural × .com/.org). `brechanetworks.health` and `brechanetworks.io` dropped from the purchase list. Full table in `open-questions.md`.
+- **May 2, 2026 (domain posture lock):** Locked 8-domain purchase list. `brechanetworks.com` = primary canonical + only email sender (SPF/DKIM/DMARC). `brecha.network` re-scoped to secondary / tech-audience redirect. Six additional defensive domains registered redirect-only (mashed/hyphenated × singular/plural × .com/.org). `brechanetworks.health` and `brechanetworks.io` dropped from the purchase list. Full table in `research-backlog.md`.
+- **May 2, 2026 (file rename):** Renamed `open-questions.md` → `research-backlog.md` to better describe its actual contents (parked tactical to-dos + post-launch research prompts). All "Things still genuinely undecided" had already been resolved; the file's role is execution + research, not open strategic questions. Updated cross-references in `README.md`, `build-plan.md`, and this file.

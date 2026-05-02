@@ -1,17 +1,19 @@
-# Open Questions — Brecha Networks
+# Research Backlog — Brecha Networks
 
-*Last updated: April 28, 2026*
+*Last updated: May 2, 2026*
 *Companion file: `decisions-locked.md`*
 
 ---
 
 ## How to use this file
 
-This file holds unresolved questions and parked tactical items for Brecha Networks. Most prior questions (Q0, Q1, Q6-Q17) have been resolved and migrated to `decisions-locked.md`. What remains are research tasks for desktop sessions and tactical follow-ups parked for later execution.
+This file holds the research backlog for Brecha Networks: parked tactical to-dos and self-contained research prompts. All pre-build strategic questions (Q0, Q1, Q6–Q17) have been resolved and migrated to `decisions-locked.md`. What remains is execution work and post-launch refinement research.
+
+(Renamed from `open-questions.md` on May 2, 2026 to better reflect what the file actually holds — execution items and research, not open strategic questions.)
 
 **Editing rules:**
 
-- When a question gets answered, move the resolution to `decisions-locked.md` and remove the question from this file.
+- If a new strategic question emerges, resolve it and migrate the decision to `decisions-locked.md` rather than parking it here.
 - The "Desktop research tasks" section is for self-contained research prompts that can be picked up in any session.
 - The "Tactical follow-ups" section is for to-do items that don't require strategic discussion — just execution.
 
