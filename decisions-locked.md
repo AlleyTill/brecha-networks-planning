@@ -1,7 +1,7 @@
 # Decisions Locked — Brecha Networks
 
-*Last updated: April 28, 2026*
-*Companion files: `build-plan.md` (week-by-week execution), `research-backlog.md` (unresolved items)*
+*Last updated: May 15, 2026*
+*Companion files: `build-plan.md` (week-by-week execution), `research-backlog.md` (unresolved items), `2026-05-15-issues-and-mitigations.md` (13-month institutional readiness plan), `2026-05-15-grants-and-funding.md` (funding paths), `2026-05-15-pitch-and-demo-scripts.md` (pitch and demo materials)*
 
 ---
 
@@ -21,7 +21,8 @@ This document holds finalized architectural and product decisions for Brecha Net
 - **Name:** Brecha Networks (Spanish for "gap" + plural "networks" — names the problem the platform addresses, calls out the many small networks the platform facilitates among professionals)
 - **Audience:** Healthcare administrators, providers, policy professionals, legal/advocacy folks, healthcare developers/builders. Explicitly **not** patients sharing personal medical experiences. Platform is for coordinating on barriers, not for personal support.
 - **Primary value:** Cross-border / cross-jurisdiction discovery and coordination on shared barriers among professionals and builders.
-- **Mexico-core mission:** Cross-border telehealth between US and Mexico is one of the most acute coordination problems in healthcare today. The platform's framing, language support, and design honor this from day one while serving a global audience.
+- **Mexico-core mission (internal framing):** Cross-border telehealth between US and Mexico is one of the most acute coordination problems in healthcare today. The platform's language support, design, and post-AWE roadmap honor this from day one. **This framing is retained internally and in grant applications where geography is relevant; it is NOT the pitch lead** (per pitch positioning rules locked 2026-05-15).
+- **External positioning at launch:** US healthcare professional coordination platform. Global / cross-border framing is downscaled pre-AWE; international expansion is a Year 2-3 plan (see `2026-05-15-issues-and-mitigations.md` Gap #9).
 - **Solo builder context:** Beginner-leaning-on-AI, building during 8-week pre-AWE window with AI-assisted workflow.
 - **Predecessor:** Barrier Registry (archived) — top-down state-by-state scraping was legally infeasible. Brecha Networks inverts the model: verified professionals contribute the barriers they actually encounter.
 
@@ -29,11 +30,27 @@ This document holds finalized architectural and product decisions for Brecha Net
 
 ## Strategic framing
 
-Three principles inherited from the planning phase that supersede ordinary product-development tradeoffs:
+Four principles that supersede ordinary product-development tradeoffs:
 
 1. **AWE deadline is non-sacred.** The goal is a load-bearing platform, not a demo at AWE specifically. AWE 2026 is one window for the goal to land, not the only one.
 2. **Infrastructure-first.** Pre-AWE focus is rock-solid infrastructure and verified-trust mechanics. No fabricated content. No fake accounts. Demo is the architecture if real users haven't onboarded by AWE day.
 3. **Quality gates over feature deadlines.** Week 7 gate decision: is foundation load-bearing? Yes → outreach push for real users in week 7-8. No → final polish only, no outreach. Either way, AWE demo happens with whatever real state exists.
+4. **Prototype framing (locked 2026-05-15).** Brecha is positioned externally as a working prototype, not an enterprise platform or institutionally-attachable product. The institutional version of Brecha is a 2-4 year project; institutional readiness is targeted for **June 2027**. Sophisticated investors and partners pattern-match overclaim instantly; honest framing is the load-bearing trust signal pre-launch and pre-funding. Detailed 13-month plan to bridge prototype → institutional readiness lives in `2026-05-15-issues-and-mitigations.md`.
+
+---
+
+## Pitch positioning (locked 2026-05-15)
+
+These rules govern external pitches to funders, conference attendees, and prospective institutional partners. They do NOT change internal strategic framing (Mexico-core remains valid internally). Stress-tested against the 12 enterprise-readiness gaps documented in `2026-05-15-issues-and-mitigations.md`.
+
+1. **Frame Brecha as a prototype**, not a platform or enterprise product. The institutional version exists in 2028, not 2026.
+2. **Lead with lived experience**, not the product. People remember founders who hit walls; they don't remember product descriptions.
+3. **The ask is prototype-stage backing** — $25-50K angel checks, $25-100K foundation grants, accelerator slots. Not Series A. Not enterprise capital. Audience is prototype-stage angels, foundation program officers, healthcare-adjacent advisors.
+4. **Do NOT lead with US-Mexico cross-border framing in pitches.** Strategic framing internally is unchanged; this is a pitch-language rule only. (See memory file `feedback_pitch_no_mexico_lead.md`.)
+5. **Show value through your story**, not abstractly.
+6. **Name what Brecha isn't.** Not enterprise-ready. Not institutionally-attached. Not finished.
+
+Production pitch versions (elevator, AWE roundtable opener 3-4 min, demo scripts, customer support prep, founder reflections) live in `2026-05-15-pitch-and-demo-scripts.md`.
 
 ---
 
@@ -142,7 +159,7 @@ Users can post under a pseudonym. Other users always see role + region attached 
 - **At signup:** email verification (auto, code-based — not magic link), self-declared role from a fixed dropdown, self-declared region (Mapbox autocomplete), agreement to ToS
 - **Email-domain enhancement:** professional/organizational email domains get a small additional marker (subtle indicator, automatic). Personal domains (gmail.com, etc.) don't get this marker.
 - **"Self-declared" indicator:** visible on profiles and posts (e.g., subtle dotted underline on role badge with tooltip "Self-declared, not platform-verified")
-- **Verified badge:** post-AWE feature. Users will be able to apply for full credential verification (license upload, employment letter). Verified users get a distinct visual marker.
+- **Verified badge:** post-AWE feature. Users will be able to apply for full credential verification (license upload, employment letter). Verified users get a distinct visual marker. **Implementation roadmap (locked 2026-05-15):** Stripe Identity (identity-only, ~Sept 2026) → NPI registry lookup for clinicians (free public API, ~Oct 2026) → state bar lookup for attorneys (~Nov 2026) → FSMB physician profile (paid API, ~Dec 2026) → manual credential review workflow (~Jan 2027) → "Verified by review" badge tier (~Feb 2027). Full sequencing in `2026-05-15-issues-and-mitigations.md` Gap #5.
 - **Good-faith ToS clause** backs the whole system: users agree to truthfully represent location, role, and barrier experience.
 
 ### Region granularity (launch behavior)
@@ -273,7 +290,7 @@ After role + region + ToS, user picks "their issue" from auto-suggest dropdown:
 
 ## Legal & compliance posture
 
-- **Lawyer consult: COMMITTED.** $300-500 one-hour consultation in week 5-6 with a healthcare/tech lawyer in WA. Pre-loaded agenda items: trademark filing strategy (Brecha Networks Class 42 + 44 with Brea Networks + Breca Peru audio-similarity flags), user-generated content liability (Section 230 + defamation mitigation), HIPAA boundary confirmation, GDPR cross-border data flow, templated ToS sufficiency, post-AWE verified credential feature liability shifts.
+- **Lawyer consult: COMMITTED.** $300-500 one-hour consultation in week 5-6 with a healthcare/tech lawyer in WA. Pre-loaded agenda items: **entity selection (501c3 vs C-corp vs LLC) and ongoing retainer scoping (added 2026-05-15 — entity formation is the unlock for grants, banking, D&O insurance, and most foundation funding paths)**, trademark filing strategy (Brecha Networks Class 42 + 44 with Brea Networks + Breca Peru audio-similarity flags), user-generated content liability (Section 230 + defamation mitigation), HIPAA boundary confirmation, GDPR cross-border data flow, templated ToS sufficiency, post-AWE verified credential feature liability shifts.
 - **Healthcare informatics consult: DEFERRED.** Self-serve via free SNOMED browser at launch. Reserve $200-400 for post-AWE if SNOMED becomes more central to user-facing features.
 - **Privacy policy:** **iubenda Essentials** (~$5-7/mo, 25K pageviews/mo cap — well above AWE-launch volume). GDPR + CCPA + auto-updates as laws change. Healthcare-specific clauses to be confirmed/added during the week 5-6 lawyer consult.
 - **Terms of Service must include:**
@@ -467,3 +484,4 @@ Target: under $100/month total.
 - **May 2, 2026 (file rename):** Renamed `open-questions.md` → `research-backlog.md` to better describe its actual contents (parked tactical to-dos + post-launch research prompts). All "Things still genuinely undecided" had already been resolved; the file's role is execution + research, not open strategic questions. Updated cross-references in `README.md`, `build-plan.md`, and this file.
 - **May 2, 2026 (package maintenance check):** Ran the week-1 maintenance verification ahead of schedule. `pinax-notifications` swapped to `django-nyt` (cleanly maintained, last release 2025-11). `django-mentions` is abandoned (no commits since 2015) and the locked alternative `django-exo-mentions` also fails the bar (no PyPI release since 2019, 1 GitHub star). Decision: build a small in-house @mention parser in week 2 rather than inherit an abandoned dependency. Removed the maintenance-status-check tactical follow-up from `research-backlog.md`.
 - **May 2, 2026 (provider locks + role taxonomy):** Locked four provider choices: **Email = Resend** (3K/mo free covers AWE-launch; cheaper at projected scale than Postmark Basic $15). **Translation = DeepL** (better EN↔ES quality, Mexico-core priority; 31 languages cover the post-AWE plan). **Hosting = Railway Pro** (cheaper than Render at AWE-scale, faster DX for solo builder). **Privacy policy = iubenda Essentials** (~$5-7/mo, 25K pageview cap fits launch volume). Tech stack table + Privacy policy bullet updated. Resolved tasks #1, #2, #3, #5. Locked role taxonomy: 42 roles + "Other" across Clinical / Non-clinical / Builder/Tech, sources synthesized from NUCC, AMA/ABMS, Doximity, LinkedIn, Health eCareers/JAMA, HRSA, CMS, ONC/HIMSS. Full table + judgment calls in new file `role-taxonomy.md`. Removed the "pending research" placeholders. Resolved Task 1 in `research-backlog.md`.
+- **May 15, 2026 (strategic recalibration after enterprise-readiness stress test):** Harsh stress-test of the project produced 12 enterprise-readiness gaps (solo founder, zero traction, broken founder continuity, small-claims-level legal posture, theatrical verification, no formal entity, no revenue model, undefined competitive landscape, aspirational international scope, no metrics framework, brand attachment risk, single-point-of-failure launch). Outputs: (a) 13-month institutional readiness plan targeting **June 2027** in `2026-05-15-issues-and-mitigations.md`; (b) funding survey + Seattle Tech Week prep in `2026-05-15-grants-and-funding.md`; (c) pitch frameworks + demo scripts + customer-support prep in `2026-05-15-pitch-and-demo-scripts.md`; (d) verbatim transcript in `2026-05-15-full-conversation.md`. **Locks added to this file:** (1) Strategic framing principle #4 — prototype framing, not enterprise platform. (2) New "Pitch positioning" section — six pitch rules including no-US-Mexico-lead. (3) Project context — Mexico-core re-marked as internal framing only; external positioning at launch is US-focused. (4) Lawyer consult agenda expanded with entity selection and retainer scoping. (5) Verification badge roadmap sequenced with target dates (Stripe Identity → NPI → state bar → FSMB → manual review). New memory file: `feedback_pitch_no_mexico_lead.md`.
