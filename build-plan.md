@@ -1,6 +1,6 @@
 # Build Plan — Brecha Networks
 
-*Last updated: April 28, 2026*
+*Last updated: May 16, 2026*
 *Companion files: `decisions-locked.md` (architectural source of truth), `research-backlog.md` (parked tactical to-dos + research prompts)*
 
 ---
@@ -79,7 +79,7 @@ Examples:
 ### Week 1: Project bootstrap
 
 **Build deliverables:**
-- Django project initialized with `django-allauth`, `django-tailwind`, `django-htmx`, `django-environ` configured
+- Django project initialized with `django-allauth` (pinned to specific 65.x), `django-tailwind-cli` (standalone binary — no Node), `django-htmx`, `django-environ` configured
 - Custom user model with verified-pseudonymous fields (username + role + region + bio + email)
 - URL conventions locked from day 1 (plural collections, slug-based detail URLs)
 - Base template structure (Tailwind + HTMX + Alpine.js loaded)
@@ -88,9 +88,12 @@ Examples:
 - First barrier seeded into local dev database (your own — for testing only, NOT for production launch)
 
 **Hands-on tasks:**
+- Windows dev environment prep: enable long paths (`LongPathsEnabled=1` registry + `git config --global core.longpaths true`); add Windows Defender exclusions for `C:\dev\` and `python.exe`
+- Create venv at `C:\dev\brecha-networks\.venv\`; pin all dependencies in `requirements.txt` (including `django-allauth` to a specific 65.x — silent removals in the 65.x line make auto-upgrades unsafe)
 - Run Django startproject + startapp commands; understand what each file does
 - Configure `django-allauth` Flow C signup
-- Set up Tailwind compilation pipeline
+- Set up `django-tailwind-cli` (standalone Tailwind binary download; no `node_modules`)
+- Configure admin MFA from day one (`django-otp` or `allauth` MFA) per the 2026-05-12 supplement threat-model decision — moved from Week 5 to Week 1
 - First commit + push to new codebase repo (`AlleyTill/brecha-networks`)
 - Tactical: domain purchase + handle reservations (parallel to coding)
 
